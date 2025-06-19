@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3B82F6" />
+    <meta name="description" content="Gestionnaire de Membres d'Église - Application moderne pour la gestion des membres" />
+    <meta name="keywords" content="église, membres, gestion, christian, church, management" />
+    <meta name="author" content="Gestionnaire Église" />
+
+```
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Gestionnaire de Membres d'Église" />
+<meta property="og:description" content="Application moderne pour la gestion des membres d'église" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Gestionnaire de Membres d'Église" />
+<meta property="twitter:description" content="Application moderne pour la gestion des membres d'église" />
+
+<title>Gestionnaire de Membres - Église</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Configuration Tailwind pour personnalisation -->
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            200: '#bfdbfe',
+            300: '#93c5fd',
+            400: '#60a5fa',
+            500: '#3b82f6',
+            600: '#2563eb',
+            700: '#1d4ed8',
+            800: '#1e40af',
+            900: '#1e3a8a',
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<!-- Styles pour l'optimisation mobile -->
+<style>
+  /* Optimisation pour mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  /* Amélioration des performances sur mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Style pour le chargement */
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* PWA Styles */
+  #root {
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Optimisation des images sur mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+```
+
+  </head>
+  <body class="bg-gray-50">
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>JavaScript requis</h1>
+        <p>Vous devez activer JavaScript dans votre navigateur pour utiliser cette application.</p>
+        <p>Veuillez activer JavaScript et rafraîchir la page.</p>
+      </div>
+    </noscript>
+
+```
+<!-- Loading spinner affiché pendant le chargement de React -->
+<div id="loading" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+  <div class="loading-spinner"></div>
+  <p style="text-align: center; margin-top: 20px; color: #6b7280;">Chargement de l'application...</p>
+</div>
+
+<!-- Container principal de l'application React -->
+<div id="root"></div>
+
+<!-- Script pour masquer le loading une fois React chargé -->
+<script>
+  // Masquer le loading une fois que React a pris le contrôle
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.display = 'none';
+      }
+    }, 1000);
+  });
+  
+  // Service Worker pour PWA (optionnel)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('SW registered: ', registration);
+        })
+        .catch(function(registrationError) {
+          console.log('SW registration failed: ', registrationError);
+        });
+    });
+  }
+</script>
+```
+
+  </body>
+</html>
